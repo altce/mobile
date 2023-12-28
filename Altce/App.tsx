@@ -1,18 +1,18 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+
+import List from './List/List'
 
 const App = () => (
-  <View style={styles.main}>
-    <Text>Altce</Text>
+  <View style = { styles.main }>
+    <List />
   </View>
 )
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: '#646',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: '#424',
+    flex: 1
   }
 })
 
