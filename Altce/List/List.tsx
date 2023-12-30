@@ -24,7 +24,11 @@ const List = () => {
 
   return (
     <View style = { styles.main }>
-      <ListItems listItems = { listItems }/>
+      <ListItems
+        listItems = { listItems }
+        removeItem = { (itemToRemove: string) => setListItems(listItems.filter(item => itemToRemove !== item)) }
+      />
+
       <NewListItemField addListItem = { (newListItem: string) => setListItems(listItems.concat(newListItem)) }/>
     </View>
   )

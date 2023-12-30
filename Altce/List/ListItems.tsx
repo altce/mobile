@@ -4,7 +4,8 @@ import { ScrollView, StyleSheet } from 'react-native'
 import ListItem from './ListItem'
 
 type ListItemsProps = {
-  listItems: string[]
+  listItems: string[],
+  removeItem: Function
 }
 
 const ListItems = (props: ListItemsProps) => (
@@ -14,6 +15,7 @@ const ListItems = (props: ListItemsProps) => (
         <ListItem
           key = { item }
           value = { item }
+          remove = { () => props.removeItem(item) }
         />
       ))
     }
