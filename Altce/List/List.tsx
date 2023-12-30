@@ -9,28 +9,23 @@ const List = () => {
   const [ listItems, setListItems ] = useState<string[]>([])
   const { getItem, setItem } = useAsyncStorage('listItems')
 
-  const saveListItems = () => {
-    const json = JSON.stringify(listItems)
-    setItem(json)
-  }
-
   const loadListItems = () => {
     getItem()
       .then(json => JSON.parse(json || ''))
       .then(result => setListItems(result))
   }
+  
+  const saveListItems = () => {
+    setItem(JSON.stringify(listItems))
+  }
 
   useEffect(() => loadListItems(), [])
   useEffect(() => saveListItems(), [ listItems ])
 
-  const addListItem = (newListItem: string) => {
-    setListItems(listItems.concat(newListItem))
-  }
-
   return (
     <View style = { styles.main }>
       <ListItems listItems = { listItems }/>
-      <NewListItemField addListItem = { addListItem }/>
+      <NewListItemField addListItem = { (newListItem: string) => setListItems(listItems.concat(newListItem)) }/>
     </View>
   )
 }
