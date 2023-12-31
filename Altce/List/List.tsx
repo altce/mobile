@@ -12,6 +12,7 @@ const List = () => {
   const loadListItems = () => {
     getItem()
       .then(json => JSON.parse(json || ''))
+      .catch(error => { return [] })
       .then(result => setListItems(result))
   }
   
